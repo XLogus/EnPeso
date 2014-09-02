@@ -1,0 +1,16 @@
+<div id="loginWrapper">
+    <img src="img/logo-login.png" class="logo-login align-center" />    
+    <div id="loginBox">
+        <h2 class="talign-center">Bienvenido</h2>
+        <form name="loginUserForm">
+            <input ng-model="username" name="login" id="login" value="" class="txt login" placeholder="Ingrese email" type="text" required />
+            <br />
+            <input ng-model="password" name="pass" id="pass" value="" class="txt pass" placeholder="Ingrese su clave" type="password" required />
+            <br />
+            <input ng-click="login(username)" type="submit" name="submit" id="submit" value="Ingresar" class="submit" ng-disabled="!loginUserForm.$valid" />
+        </form>
+        <div class="msg-error" ng-class="{mostrar:error==1}">
+            Usuario o clave incorrectos
+        </div>
+    </div>
+</div><!--loginWrapper-->
