@@ -26,13 +26,14 @@ var app = myApp.value('charting', {
       }
     });
 myApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/login', {templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login'});
+  $routeProvider.when('/', { templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login' });
+  ////$routeProvider.when('/login', {templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login'});
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', title:'home', controller: 'ctrl_home'});
   $routeProvider.when('/dietas', {templateUrl: 'partials/dietas.html', title:'dietas', controller: 'ctrl_dietas'});
   $routeProvider.when('/citas', {templateUrl: 'partials/citas.html', title:'citas', controller: 'ctrl_citas'});
   $routeProvider.when('/chat', {templateUrl: 'partials/chat.html', title:'chat', controller: 'ctrl_chat'});  
   $routeProvider.when('/registro', {templateUrl: 'partials/registro.html', title:'registro', controller: 'ctrl_registro'});
-  $routeProvider.otherwise({redirectTo: '/login'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);
 myApp.run(function($rootScope, auth) {
     $rootScope.salir = function() {
@@ -104,7 +105,7 @@ app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
             $cookieStore.remove("username"),
             $cookieStore.remove("id_user");
             //mandamos al login            
-            $location.path("/login");
+            $location.path("/");
         },
         checkStatus : function(activo)
         {
@@ -112,10 +113,10 @@ app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
             var rutasPrivadas = ["/home","/dietas","/citas","/chat","/login"];
             if(this.in_array($location.path(),rutasPrivadas) && typeof($cookies.id_user) == "undefined")
             {
-                $location.path("/login");
+                $location.path("/");
             }
             //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
-            if(activo=="/login" && typeof($cookies.id_user) != "undefined")
+            if(activo=="/" && typeof($cookies.id_user) != "undefined")
             {
                 $location.path("/home");
             }

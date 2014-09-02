@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('ctrl_login', ['$scope', 'auth', '$location', function($scope,auth,$location) {
+  .controller('ctrl_login', ['$scope', 'auth', function($scope,auth,$location) {
         $scope.rpta = '';
         $scope.login = function() {
             auth.login($scope.username, $scope.password);
