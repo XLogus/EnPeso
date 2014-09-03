@@ -4,7 +4,7 @@ var $url = 'http://enpeso.com/panel/json/';
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
   'ngRoute',
-  'ngCookies',
+  'LocalStorageModule',
   'ui.chart',
   'myApp.filters',
   'myApp.services',
@@ -60,7 +60,7 @@ myApp.run(['$location', '$rootScope', 'auth', function($location, $rootScope, au
 }]);
 
 //// logins
-app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
+myApp.factory("auth", function(localStorageService,$location,$http,$rootScope)
 {
     return{
         login : function(username, password)
@@ -68,8 +68,7 @@ app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
             var url = $url+'login.php?callback=JSON_CALLBACK';
             var items;
             var rpta="dddd";
-            $cookieStore.remove("username"),
-            $cookieStore.remove("id_user");
+            localStorageService.clearAll();
             $http({
                 method: "JSONP", 
                 url: url,
@@ -80,8 +79,10 @@ app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
                     //$scope.data = data;
                     items = data.items;
                     if(items.success=="1") {
-                        $cookies.id_user = items.id_usuario;
-                        $cookies.username = items.nombre+" "+items.apellido;
+                        //$cookies.id_user = items.id_usuario;
+                        //$cookies.username = items.nombre+" "+items.apellido;
+                        localStorageService.set('id_user', items.id_usuario);
+                        localStorageService.set('nombre', items.nombre+" "+items.apellido);
                         $location.path("/home");                     
                     } else {
                         $rootScope.error = 1;                                                
@@ -102,21 +103,24 @@ app.factory("auth", function($cookies,$cookieStore,$location,$http,$rootScope)
         logout : function()
         {
             //al hacer logout eliminamos la cookie con $cookieStore.remove
-            $cookieStore.remove("username"),
-            $cookieStore.remove("id_user");
+            //$cookieStore.remove("username"),
+            //$cookieStore.remove("id_user");
+            localStorageService.clearAll();
             //mandamos al login            
             $location.path("/");
         },
         checkStatus : function(activo)
         {
             //creamos un array con las rutas que queremos controlar
+            var id_user = localStorageService.get('id_user');
+            console.log("son id_user: "+id_user);
             var rutasPrivadas = ["/home","/dietas","/citas","/chat","/login"];
-            if(this.in_array($location.path(),rutasPrivadas) && typeof($cookies.id_user) == "undefined")
+            if(this.in_array($location.path(),rutasPrivadas) && !id_user )
             {
                 $location.path("/");
             }
             //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
-            if(activo=="/" && typeof($cookies.id_user) != "undefined")
+            if(activo=="/" && id_user )
             {
                 $location.path("/home");
             }

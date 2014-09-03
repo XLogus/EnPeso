@@ -9,8 +9,8 @@ angular.module('myApp.controllers', [])
             auth.login($scope.username, $scope.password);
         }
   }])
-  .controller('ctrl_home', ['$scope', 'charting', '$cookies', '$http', function($scope,charting,$cookies,$http) {
-        $scope.usuario_nombre = $cookies.username;        
+  .controller('ctrl_home', ['$scope', 'charting', '$http', 'localStorageService', function($scope,charting,$http,localStorageService) {
+        $scope.usuario_nombre = localStorageService.get('id_user');        
         $scope.someData = [[
         ['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],
         ['Out of home', 16],['Commuting', 7], ['Orientation', 9]
