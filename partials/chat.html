@@ -1,10 +1,19 @@
 <h2 class="title">Mensajes</h2>
 <div class="mensajes-historial">
+    <ul class="mensajes-list">
+                <li ng-repeat="msg in items">
+                    <div class="mensaje">
+                        <p>{{msg.mensaje}}</p>
+                        <span class="autor">{{msg.nombre}}</span>
+                    </div>                    
+                    <span class="fecha">{{msg.fecha}} {{msg.hora}}</span>
+                </li>
+            </ul>
 </div>
 
 <div class="row">
     <div class="col-md-9">
-        <textarea class="fullwidth" name="mensajes"></textarea>
+        
     </div>
     <div class="col-md-3">
         <input type="submit" name="enviar" value="Enviar" />

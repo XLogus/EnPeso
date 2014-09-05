@@ -1,14 +1,27 @@
 <h2 class="title">Plan Alimentario</h2>
 
-<div class="row">
+<div class="row plan_elige">
     <div class="col-md-4">
         Elige un plan alimentario
     </div>
     <div class="col-md-8">
-        <select name="plan">
-            <option value="12">plan</option>
+        <select name="plan" ng-model="plan_id" ng-change="ver_plan()">
+            <option ng-repeat="item in items" value="{{item.id_dieta}}">#{{$index + 1}} {{item.fecha}}</option>
         </select>
     </div>
+</div>
+
+<div class="row">    
+    <div class="planWrapper">
+        <div class="item" ng-repeat="dia in dias">
+            <h2>{{dia.Dia_Nombre}}</h2>
+            <div ng-repeat="momento in momentos">
+                <h3>{{momento.nombre}}</h3>                
+                <p>{{momento.contenido}}</p>
+            </div>
+        </div><!--item-->        
+    </div><!--planWrapper-->
+    
 </div>  
 <br />  
 <br />

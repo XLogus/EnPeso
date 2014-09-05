@@ -5,26 +5,13 @@ var $url = 'http://enpeso.com/panel/json/';
 var myApp = angular.module('myApp', [
   'ngRoute',
   'LocalStorageModule',
-  'ui.chart',
+  'angularCharts',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
   'myApp.controllers'
 ]);
-var app = myApp.value('charting', {
-      pieChartOptions: {
-        seriesDefaults: {
-          // Make this a pie chart.
-          renderer: jQuery.jqplot.PieRenderer,
-          rendererOptions: {
-            // Put data labels on the pie slices.
-            // By default, labels show the percentage of the slice.
-            showDataLabels: true
-          }
-        },
-        legend: { show:true, location: 'e' }
-      }
-    });
+
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', { templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login' });
   ////$routeProvider.when('/login', {templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login'});
@@ -111,18 +98,42 @@ myApp.factory("auth", function(localStorageService,$location,$http,$rootScope)
         },
         checkStatus : function(activo)
         {
+            var url = $url+'sesion.php?callback=JSON_CALLBACK';                        
+            /// sesion
+            $http({
+                method: "JSONP", 
+                url: url
+                }).               
+                success(function(data, status) {
+                    var item = data.items;
+                    if(item.user_id==0) {
+                        localStorageService.clearAll();
+                        var id_user = localStorageService.get('id_user');            
+                        console.log("son id_user: "+id_user);
+                        control(id_user);
+                    }                    
+                });
+           
+            
             //creamos un array con las rutas que queremos controlar
-            var id_user = localStorageService.get('id_user');
-            console.log("son id_user: "+id_user);
-            var rutasPrivadas = ["/home","/dietas","/citas","/chat","/login"];
-            if(this.in_array($location.path(),rutasPrivadas) && !id_user )
-            {
-                $location.path("/");
+            function control(id_user) {
+                var rutasPrivadas = ["/home","/dietas","/citas","/chat","/login"];
+                if(in_array($location.path(),rutasPrivadas) && !id_user ) {
+                    $location.path("/");
+                }
+                //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
+                if(activo=="/" && id_user ) {
+                    $location.path("/home");
+                }
             }
-            //en el caso de que intente acceder al login y ya haya iniciado sesión lo mandamos a la home
-            if(activo=="/" && id_user )
-            {
-                $location.path("/home");
+            function in_array(needle, haystack) {
+                var key = '';
+                for(key in haystack) {
+                    if(haystack[key] == needle) {
+                        return true;
+                    }
+                }
+                return false;
             }
         },
         showmenu: function() {
