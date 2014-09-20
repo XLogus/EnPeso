@@ -1,21 +1,29 @@
 <h2 class="title">Mensajes</h2>
 <div class="mensajes-historial">
     <ul class="mensajes-list">
-                <li ng-repeat="msg in items">
+                <li ng-repeat="msg in items" class="{{msg.tipo}}">
+                    <div class="mensaje-contenedor">
+                    <div class="mensaje-avatar">
+                        <img src="img/avatar-default.png" />
+                    </div>
                     <div class="mensaje">
-                        <p>{{msg.mensaje}}</p>
+                        {{msg.mensaje}}
+                        <br />
                         <span class="autor">{{msg.nombre}}</span>
                     </div>                    
+                    </div>
                     <span class="fecha">{{msg.fecha}} {{msg.hora}}</span>
                 </li>
             </ul>
 </div>
 
-<div class="row">
-    <div class="col-md-9">
-        
+<div class="row mensaje-envio">
+    <div class="col-xs-10">
+        <textarea ng-model="elmensaje" name="elmensaje" class="elmensaje" placeholder="Escribe tu mensaje..."></textarea>
     </div>
-    <div class="col-md-3">
-        <input type="submit" name="enviar" value="Enviar" />
+    <div class="col-xs-2 align-center">
+        <a href="" ng-click="enviar_mensaje()">
+            <img src="img/mas.png" />
+        </a>
     </div>
 </div>

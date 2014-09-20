@@ -1,0 +1,55 @@
+<div class="row">    
+    <h3 class="seccion">INFORMACIÓN PERSONAL</h3>
+    <ul class="config-list">
+        <li>            
+            <input type="text" size="30" name="nombres" id="nombres" ng-model="items.nombres" class="text" placeholder="Nombres" />
+        </li>
+        <li>            
+            <input type="text" size="30" name="apellidos" id="apellidos" ng-model="items.apellidos" class="text" placeholder="Apellidos" />
+        </li>
+        <li>            
+            <input type="text" size="30" name="nacimiento" id="nacimiento" ng-model="items.nacimiento" class="text" placeholder="Fecha de Nacimiento" />
+        </li>
+        <li>      
+            <!--
+            <select name="genero" id="genero" ng-model="items.genero" ng-options="genero.name for genero in generos track by genero.id"></select>
+            -->
+            <select name="genero" id="genero" ng-model="items.genero" ng-options="genero.id as genero.name for genero in generos "></select>            
+        </li>
+    </ul>
+    <h3 class="seccion">INFORMACIÓN DE CONTACTO</h3>
+    <ul class="config-list">
+        <li>            
+            <input type="text" size="30" name="telefono" id="telefono" ng-model="items.telefono" class="text" placeholder="Teléfono" />
+        </li>
+        <li>            
+            <input type="text" size="30" name="celular" id="celular" ng-model="items.celular" class="text" placeholder="Celular" />
+        </li>
+        <li>            
+            <input type="text" size="30" name="email" id="email" ng-model="items.email" class="text" placeholder="E-mail" />
+        </li>
+        <li>            
+            <input type="text" size="30" name="direccion" id="direccion" ng-model="items.direccion" class="text" placeholder="Dirección" />
+        </li>
+        <li>
+            <a href="" ng-click="guardar(items)" class="btn btn-primary">Guardar Cambios</a>
+        </li>
+    </ul>    
+    <h3 class="seccion">MI CUENTA</h3>
+    <ul class="config-list">
+        <li>
+            <input type="password" size="30" ng-model="nclave" name="nueva_clave" class="text" placeholder="Nueva Clave" />
+        </li>
+        <li>
+            <input type="password" size="30" ng-model="nclave2" name="nueva_clave2" class="text" placeholder="Repetir Nueva Clave" />
+        </li>
+        <li>
+            <a href="" ng-click="cambiar_clave(nclave, nclave2)" ng-disabled="nclave!=nclave2 || nclave==''" class="btn btn-primary">Cambiar Clave</a>
+        </li>
+        <li>
+        <a href="" ng-click="salir()">
+            Cerrar sesión
+        </a>
+        </li>
+    </ul>
+</div><!--row-->

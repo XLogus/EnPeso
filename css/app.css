@@ -151,9 +151,11 @@ ul#bottombar {
 }
 
 .home-basico {
-    padding: 16px 30px;
+    padding: 25px 30px;
     background-color: #e1e2e6;
     margin: 12px -25px;
+    margin-top: 40px;
+    margin-bottom: 0px;
 }
 body.perfil h2 {
     margin-top: 5px;
@@ -178,6 +180,7 @@ body.perfil h2 {
     overflow: hidden;    
     border:1px solid #0099f1;
     border-radius: 50%;
+    margin-top: 30px;
 }
 .fotoWrapper2 {
     border:5px solid #FFF;
@@ -278,13 +281,87 @@ span.home-item {
 } 
 .mensajes-list {
     list-style: none;    
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 50px;
 } 
-.mensajes-list li{
-    padding: 5px;
+.mensaje-avatar {
+    border-radius: 50%;
+    width: 15%;
+    max-width: 80px;
+    height: auto;
+    border:  1px  solid #cbcdd9;
+    overflow: hidden;
+    float:left;    
+}
+li.msj_paciente .mensaje-avatar{
+    float: right;    
+}
+.mensaje-avatar img{
+    width: 100%;
+}
+.mensajes-list li{    
+    margin-bottom: 10px;
+    text-align: right;
+    clear: both;    
+}
+.mensajes-list li .mensaje {
+    padding: 7px 12px;
     background-color: #0099f1;
     color:#FFF;
     border-radius:3px;
-    margin-bottom: 5px;
+    text-align: left;
+    float: right;
+    width: 75%;
+    position: relative;
+}
+li.msj_paciente .mensaje {
+    float: left;
+    background-color: #b2b2b2;
+}
+.mensajes-list li .mensaje:before{
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid #0099f1;  
+  display: block;
+  position: absolute;
+  top:8px;
+  left: -10px;
+  content:" ";
+}
+li.msj_paciente {
+    text-align: left;
+}
+li.msj_paciente .mensaje:before {
+    right:-10px;
+    left: auto;
+    width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-left:10px solid #b2b2b2;
+  border-right: none;
+}
+
+
+.mensaje-contenedor {
+    width: 100%;
+    overflow: hidden;
+}
+.mensaje-envio {
+    background-color: #272c30;
+    color:#FFF;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 10px 15px;
+}
+textarea.elmensaje {
+    background: none;
+    border:none;
+    color:#FFF;
 }
 .autor {
     font-weight: bold;
@@ -296,6 +373,7 @@ span.home-item {
 /********************************
   Misc
 **********************************/
+
 .consombra {
     box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.5);
 }  
@@ -320,7 +398,12 @@ span.home-item {
 .msg-error.mostrar {
     display: block;
 }
-
+a.btn-primary {
+    background-color: #0099f1;
+}
+a.btn-primary:hover {
+    background-color: #34373c;
+}
 
 /***************************************
   Login
@@ -395,11 +478,48 @@ body.login .col-md-9 {
 /*************************************
   Dietas
 **************************************/
+ul.plan {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+    ul.plan li{
+        border-top:1px solid #FFF;
+        border-bottom:1px solid #d7d8dc;
+        padding: 10px 12px;
+        font-weight: bold;
+    }
+    ul.plan li:hover{
+        background-color: #009bf5;
+    }    
+    ul.plan li a{
+        color:#0091f6;  
+        display: block;
+        padding-top: 6px; 
+    }    
+    ul.plan li a span{
+        color:#666;
+        font-weight: normal;
+        font-size: 12px;
+    }
+    ul.plan li:hover a, ul.plan li:hover a span{
+        color:#FFF;
+        text-decoration: none;
+    }
+    .icon-circle {
+        width: 38px;
+        height: 38px;
+        border-radius:50%;
+        border:1px solid #cdccd9;
+        background-color: #FFF;
+        text-align: center;
+        padding-top: 5px;
+        padding-left: 3px;
+    }
 .plan_elige {
     background-color: #0099f1;
     color:#FFF;
-    padding: 4px 0px;
-    padding-bottom: 8px;
+    padding: 10px 0px;    
     text-align: center;
 }
 .plan_elige select{
@@ -423,7 +543,138 @@ body.login .col-md-9 {
     margin-top: 5px;
     margin-left: 10px;
 }
-   
+/**********************************
+ Configuracion
+**********************************/
+h3.seccion {
+    background-color: #4c4d52;
+    color:#FFF;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-bottom: 7px;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+ul.config-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+ul.config-list li{
+    padding: 12px 15px;
+    border-top:1px solid #fafafa;
+    border-bottom:1px solid #dfe0e4;
+}
+ul.config-list li label{
+    font-size: 12px;
+}
+ul.config-list li input.text {
+    border:none;
+    background: none;
+    width: 100%;
+}    
+ul.config-list li input.text:focus {
+    border: 1px solid #666;
+    background-color: #FFF;
+    border-radius:3px;
+    padding: 3px 5px;
+}
+
+
+/************************************
+  Registro Diario
+************************************/
+h2.registro_dia {
+    text-align: center;
+    margin: 5px 0px;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 10px;
+}
+h3.registro_fecha {
+    text-align: center;
+    margin: 5px 0px;
+    font-size: 14px;
+    color: #0099f1;
+}
+a.ctrl_fecha {
+    display: block;
+    color:#FFF;
+    font-weight: bold;
+    background-color: #0099f1;    
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    margin-top: 18px;
+    padding-top: 5px;
+}  
+.fecha-votacion {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+textarea.fecha-observacion {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 15px;
+}
+input.frm-radio {
+    display: none;
+}
+label.label-radio {
+    display: block;
+    border-radius:50%;
+    height: 55px;
+    width: 55px;
+    color:#FFF;
+    background-color: #000;
+    cursor: pointer;
+    padding-top: 16px;
+}
+label.label-mal { background-color: #BB0000; }
+label.label-mamenos { background-color: #edbe03; }
+label.label-bien { background-color: #18aa00; }
+input.frm-radio:checked + label.label-radio {
+    background-color: #333;
+} 
+
+.registro_voto {
+    display: block;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    background-color: #CCC;
+    margin: auto;
+    margin-top: 10px;
+}
+    .registro_voto.voto1 {
+        background-color: #bb0000;
+    }
+    .registro_voto.voto2 {
+        background-color: #edbe03;
+    }
+    .registro_voto.voto3 {
+        background-color: #18aa00;
+    }
+.registro_general {    
+    border-bottom: 1px solid #d3d4d8;
+    border-top:1px solid #FFF;    
+}
+.registro_general:hover {
+    background-color: #0099f1;
+    border-bottom:1px solid #00629b;
+}
+.registro_general a{
+    font-weight: bold;
+    display: block;
+    padding: 12px 0px;
+}
+.registro_general a:hover{
+    color:#FFF;
+    text-decoration: none;
+}
+
 
 
 /* Mobile Layout: 320px.
@@ -443,13 +694,16 @@ px 68 160 252 */
         margin-bottom: 0px;
     }
     #pageWrapper {        
-        padding-bottom: 30px;
+        padding-bottom: 0px;
         min-height: 100%;    
         height: auto; 
     }
     .homeinfo-left, .homeinfo-right {
         border-radius: 10px;
         margin-bottom: 5px;
+    }
+    .mainWrapper {
+        padding: 0px;
     }
 }
 

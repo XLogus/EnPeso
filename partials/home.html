@@ -14,7 +14,10 @@
             <br />
             <span class="peso_perdido">{{peso_perdido}}</span> <span class="peso_signo">Kg</span>
             <br />
-            <span class="home-item">Peso perdido</span>
+            <a href="#/peso">
+                <span class="home-item">Peso perdido</span>
+                <img src="img/flecha-derecha.png" />
+            </a>
         </div>
         <div class="col-xs-6 talign-center">
             <img src="img/icono-cita.png" />
@@ -22,15 +25,12 @@
             <span class="cita_fecha">{{cita_fecha}}</span>
             <span class="cita_hora">{{cita_hora}}</span>
             <br />
-            <span class="home-item">Próxima cita</span>
+            <a href="#/citas">
+                <span class="home-item">Próxima cita</span>
+                <img src="img/flecha-derecha.png" />
+            </a>                
         </div>
     </div>
 </div>
 
-<div class="chartControl">
-    <a href="" ng-click="cambia_vista('peso')" ng-class="{activo:tgrafico=='peso'}">Peso</a>
-    <a href="" ng-click="cambia_vista('imc')" ng-class="{activo:tgrafico=='imc'}">IMC</a>
-    <a href="" ng-click="cambia_vista('masa')" ng-class="{activo:tgrafico=='masa'}">Masa Grasa/Magra</a>
-</div>
 
-<div ac-chart="chartType" ac-data="data" ac-config="config" id='chart' class='chart'></div>

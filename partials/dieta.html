@@ -1,0 +1,22 @@
+<h2 class="title">Plan Alimentario</h2>
+<div class="row">    
+    <div class="planWrapper">
+        <div class="item" ng-repeat="dia in dias">
+            <h2>{{dia.Dia_Nombre}}</h2>
+            <div ng-repeat="momento in momentos">
+                <h3>{{momento.nombre}}</h3>                
+                <p>{{momento.contenido}}</p>
+            </div>
+        </div><!--item-->        
+    </div><!--planWrapper-->
+    
+</div>  
+<br />  
+<br />
+<div class="row">    
+    <div class="col-md-12">
+        <a href="#/dietas" class="btn btn-primary">
+            Regresar
+        </a>
+    </div>
+</div><!--row-->  

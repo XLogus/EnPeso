@@ -1,5 +1,6 @@
 'use strict';
 var $url = 'http://enpeso.com/panel/json/';
+//var $url = 'http://localhost/sersomedia/enpesoapp/json/';
 
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
@@ -17,9 +18,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
   ////$routeProvider.when('/login', {templateUrl: 'partials/login.html', title:'login', controller: 'ctrl_login'});
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', title:'home', controller: 'ctrl_home'});
   $routeProvider.when('/dietas', {templateUrl: 'partials/dietas.html', title:'dietas', controller: 'ctrl_dietas'});
+  $routeProvider.when('/dieta/:id_dieta', {templateUrl: 'partials/dieta.html', title:'dieta', controller: 'ctrl_dieta'});
   $routeProvider.when('/citas', {templateUrl: 'partials/citas.html', title:'citas', controller: 'ctrl_citas'});
   $routeProvider.when('/chat', {templateUrl: 'partials/chat.html', title:'chat', controller: 'ctrl_chat'});  
   $routeProvider.when('/registro', {templateUrl: 'partials/registro.html', title:'registro', controller: 'ctrl_registro'});
+  $routeProvider.when('/registrovoto/:fecha/:momento', {templateUrl: 'partials/registrovoto.html', title:'registro', controller: 'ctrl_registrovoto'});
+  $routeProvider.when('/peso', {templateUrl: 'partials/peso.html', title:'peso', controller: 'ctrl_peso'});
+  $routeProvider.when('/configuracion', {templateUrl: 'partials/configuracion.html', title:'configuracion', controller: 'ctrl_configuracion'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 myApp.run(function($rootScope, auth) {
