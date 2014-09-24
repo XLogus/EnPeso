@@ -21,6 +21,7 @@ function onNotificationGCM (event) {
       case 'registered':
         if (event.regid.length > 0) {
             console.log('REGISTERED -> REGID:' + event.regid);
+            alert('REGISTERED -> REGID:' + event.regid);
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
             console.log("regID = " + event.regid);
