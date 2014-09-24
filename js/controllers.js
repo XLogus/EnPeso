@@ -292,6 +292,7 @@ angular.module('myApp.controllers', [])
                     actualizar_mensajes();
                     $scope.envio = data.items;                     
                 });
-        }                
+        }   
+        setInterval('actualizar_mensajes()',120000);             
   }]);
   

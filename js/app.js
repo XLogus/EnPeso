@@ -7,6 +7,7 @@ var myApp = angular.module('myApp', [
   'ngRoute',
   'LocalStorageModule',
   'angularCharts',
+  'pushNotify',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -27,6 +28,12 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/configuracion', {templateUrl: 'partials/configuracion.html', title:'configuracion', controller: 'ctrl_configuracion'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
+
+myApp.run(function (pushNotification) {
+    //register device on load
+    pushNotification.registerPush();
+});
+
 myApp.run(function($rootScope, auth) {
     $rootScope.salir = function() {
         auth.logout();
