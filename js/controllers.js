@@ -25,7 +25,7 @@ angular.module('myApp.controllers', [])
                     $scope.peso = items.peso;                 
                     $scope.imc = items.imc;
                     $scope.masa = items.masa_grasa;
-                    $scope.cambia_vista("peso");
+                    //$scope.cambia_vista("peso");
                 }).
                 error(function(data, status) {
                     console.log(status+"Request Failed");

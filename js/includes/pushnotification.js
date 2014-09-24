@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pushNotify')
+angular.module('pushNotify', [])
   .factory('phonegapReady', function ($rootScope, $q) {
       var loadingDeferred = $q.defer();
 
@@ -46,7 +46,8 @@ angular.module('pushNotify')
                       "ecb":"onNotificationAPN"
                   });
           }
-        }
+        });
       }
-    };
+    }
   });
+     
