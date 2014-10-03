@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-xs-2">
+        <a class="ctrl_fecha" href="" ng-click="dia_anterior()"><</a>
+    </div>
+    <div class="col-xs-8">
+        <h2 class="registro_dia">{{dia_actual}}</h2>
+        <h3 class="registro_fecha">{{fecha_actual}}</h3>
+    </div>
+    <div class="col-xs-2">
+        <a class="ctrl_fecha" href="" ng-click="dia_siguiente()">></a>
+    </div>
+</div><!--row-->
+
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/1">Desayuno</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento1.voto}}"></div>
+    </div>
+</div><!--row-->
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/2">Media Mañana</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento2.voto}}"></div>
+    </div>
+</div><!--row-->
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/3">Almuerzo</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento3.voto}}"></div>
+    </div>
+</div><!--row-->
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/4">Merienda</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento4.voto}}"></div>
+    </div>
+</div><!--row-->
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/5">Media Tarde</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento5.voto}}"></div>
+    </div>
+</div><!--row-->
+<div class="row registro_general">
+    <div class="col-xs-9">
+        <a href="#/registrovoto/{{hoy_plano}}/6">Cena</a>
+    </div>
+    <div class="col-xs-3">
+        <div class="registro_voto voto{{momento6.voto}}"></div>
+    </div>
+</div><!--row-->
+
+<div class="row">
+    <div class="col-xs-12">
+        <p><b>Notas:</b> {{observacion}}</p>
+    </div>
+</div><!--row-->

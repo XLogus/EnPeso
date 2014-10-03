@@ -11,57 +11,24 @@
     </div>
 </div><!--row-->
 
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/1">Desayuno</a>
+<div class="row fecha-votacion">    
+    <div class="col-xs-4">
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje1" class="frm-radio" value="1" /> 
+        <label for="fecha_puntaje1" class="label-radio label-mal">Mal</label>
     </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento1.voto}}"></div>
+    <div class="col-xs-4">
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje2" class="frm-radio" value="2" /> 
+        <label for="fecha_puntaje2" class="label-radio label-mamenos">+/-</label>
     </div>
-</div><!--row-->
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/2">Media Mañana</a>
+    <div class="col-xs-4">
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje3" class="frm-radio" value="3" /> 
+        <label for="fecha_puntaje3" class="label-radio label-bien">Bien</label>
     </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento2.voto}}"></div>
-    </div>
-</div><!--row-->
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/3">Almuerzo</a>
-    </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento3.voto}}"></div>
-    </div>
-</div><!--row-->
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/4">Merienda</a>
-    </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento4.voto}}"></div>
-    </div>
-</div><!--row-->
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/5">Media Tarde</a>
-    </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento5.voto}}"></div>
-    </div>
-</div><!--row-->
-<div class="row registro_general">
-    <div class="col-xs-9">
-        <a href="#/registrovoto/{{hoy_plano}}/6">Cena</a>
-    </div>
-    <div class="col-xs-3">
-        <div class="registro_voto voto{{momento6.voto}}"></div>
-    </div>
-</div><!--row-->
-
-<div class="row">
+</div>
+<div class="row">    
     <div class="col-xs-12">
-        <p><b>Notas:</b> {{observacion}}</p>
+        <textarea name="fecha-observacion" class="fecha-observacion" ng-model="observacion"></textarea>
+        <br />
+        <a href="" ng-click="voto_guardar()" class="btn btn-primary btn-block">Guardar</a>
     </div>
-</div><!--row-->
+</div>

@@ -1,5 +1,6 @@
 body, html {
     height: 100%;
+    overflow-x: hidden;
 }
 body {
     background-image: url(../img/body_bg.jpg);
@@ -20,6 +21,8 @@ background: linear-gradient(to bottom, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
 
+
+
 /********************************
   Header
 **********************************/
@@ -31,7 +34,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', end
 }
 #headerWrapper {
     background-color: #0099f1;
-    padding: 7px 0px;
+    padding: 7px 0px;    
 }
 
 
@@ -130,6 +133,10 @@ ul#bottombar {
 /***********************************
   Home
 ***********************************/
+.chartWrapper {
+    padding-top: 10px;    
+    position: relative;
+}
 .chartControl{
     padding: 3px 0px;
     text-align: center;    
@@ -144,14 +151,14 @@ ul#bottombar {
         color:#FFF;
     }
 .chart {    
-    height:250px;
+    height:300px;    
 }
 .ac-legend, .axis {
     font-size: 10px;
 }
 
 .home-basico {
-    padding: 25px 30px;
+    padding: 40px 30px;
     background-color: #e1e2e6;
     margin: 12px -25px;
     margin-top: 40px;
@@ -246,6 +253,7 @@ span.home-item {
     z-index: 99;
     margin: 0px;
     padding: 0px;
+    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.4);
 }
 #mobileMenu>li {
     background-image: url(../img/menu_li.png);
@@ -362,6 +370,7 @@ textarea.elmensaje {
     background: none;
     border:none;
     color:#FFF;
+    width:100%;
 }
 .autor {
     font-weight: bold;
@@ -696,7 +705,7 @@ px 68 160 252 */
     #pageWrapper {        
         padding-bottom: 0px;
         min-height: 100%;    
-        height: auto; 
+        height: 100%; 
     }
     .homeinfo-left, .homeinfo-right {
         border-radius: 10px;
@@ -704,6 +713,25 @@ px 68 160 252 */
     }
     .mainWrapper {
         padding: 0px;
+    }
+    #headerWrapper {
+        position: absolute;
+        width: 100%;
+        z-index:99;
+    }
+    #contentWrapper {
+        min-height: 100%;        
+    }
+    .home-basico {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+    #rightWrapper{
+        min-height: 100%;
+        position: absolute;
+        width: 100%;
+        padding-top: 40px;
     }
 }
 

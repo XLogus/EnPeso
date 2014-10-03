@@ -31,6 +31,10 @@ angular.module('myApp.controllers', [])
                     console.log(status+"Request Failed");
                     $scope.error = 1;
                 });
+    
+    
+        
+      
   }])
   .controller('ctrl_dietas', ['$scope', '$http', function($scope, $http) {
     var items;
@@ -105,17 +109,20 @@ angular.module('myApp.controllers', [])
             voto_ver($scope.hoy_plano);
         }
         var voto_ver = function($fecha) {
-            $scope.fecha_voto = 0;
-            $scope.observacion = "Ingrese sus comentarios";
             $http({
                 method: "JSONP", 
                 params: {'fecha':$fecha},
                 url: $url + "registro.php?callback=JSON_CALLBACK"
                 }).
                 success(function(data, status) {                    
-                    var items = data.items;
-                    $scope.observacion =  items[0].observacion;
-                    $scope.fecha_voto = items[0].voto;                                            
+                    //$scope.items = data.items;
+                    $scope.observacion =  data.observacion;
+                    $scope.momento1 = data.momento1;
+                    $scope.momento2 = data.momento2;
+                    $scope.momento3 = data.momento3;
+                    $scope.momento4 = data.momento4;
+                    $scope.momento5 = data.momento5;
+                    $scope.momento5 = data.momento6;                              
                 });
         }
         function fecha_actual() {
@@ -128,18 +135,6 @@ angular.module('myApp.controllers', [])
         }
         fecha_actual();
         voto_ver($scope.hoy_plano);
-        
-        /// Guardar registro
-        $scope.voto_guardar = function() {
-            $http({
-                method: "JSONP", 
-                params: {'accion':'guardar', 'fecha':$scope.hoy_plano, 'mensaje':$scope.observacion, 'puntaje':$scope.fecha_voto},
-                url: $url + "registro.php?callback=JSON_CALLBACK"
-                }).
-                success(function(data, status) {
-                    $location.path("/registro");                 
-                });
-        }
   }])
   .controller('ctrl_registrovoto', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location) {
         var $momento = $routeParams.momento;
