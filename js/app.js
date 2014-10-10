@@ -7,6 +7,7 @@ var myApp = angular.module('myApp', [
   'ngRoute',
   'LocalStorageModule',
   'angularCharts',
+  'psResponsive',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -28,13 +29,17 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
-myApp.run(function($rootScope, auth) {
+myApp.run(function($rootScope, auth, psResponsive) {
     $rootScope.salir = function() {
         auth.logout();
     };
     $rootScope.showmenu = function() {
         auth.showmenu();
     };
+    $rootScope.responsive = psResponsive;
+    $rootScope.originalw = psResponsive('width'); 
+    $rootScope.originalh = psResponsive('height');
+    $rootScope.diferencia = 0;
 });
 
 myApp.run(['$location', '$rootScope', 'auth', function($location, $rootScope, auth) {

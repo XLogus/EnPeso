@@ -276,7 +276,7 @@ angular.module('myApp.controllers', [])
                 });
         }
   }])
-  .controller('ctrl_chat', ['$scope', '$http', function($scope, $http) {        
+  .controller('ctrl_chat', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {        
         var actualizar_mensajes = function() {
             $http({
                 method: "JSONP", 
@@ -302,6 +302,6 @@ angular.module('myApp.controllers', [])
                     $scope.envio = data.items;                     
                 });
         }   
-        setInterval('actualizar_mensajes()',120000);             
+        setInterval('actualizar_mensajes()',120000);     
   }]);
   

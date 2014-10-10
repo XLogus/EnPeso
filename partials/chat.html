@@ -16,11 +16,13 @@
                 </li>
             </ul>
 </div>
-
-<div class="row mensaje-envio" ng-class="{active:hasFocus==true}">
+<div class="row mensaje-envio" ng-style="{'bottom':diferencia+'px'}">
     <form ng-submit="enviar_mensaje()">
     <div class="col-xs-10">
-        <textarea ng-model="elmensaje" ng-focus="hasFocus=true" ng-blur="hasFocus=false" name="elmensaje" class="elmensaje" placeholder="Escribe tu mensaje..."></textarea>
+        <textarea ng-model="elmensaje" name="elmensaje" class="elmensaje" placeholder="Escribe tu mensaje..."></textarea>
+        <div id="medidas">
+    {{originalw}} {{originalh}} {{responsive('diferencia')}}
+</div>
     </div>
     <div class="col-xs-2 align-center">
         <input type="image" src="img/mas.png"  ng-click="enviar_mensaje()"/>        
