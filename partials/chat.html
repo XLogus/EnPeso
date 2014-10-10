@@ -17,9 +17,9 @@
             </ul>
 </div>
 
-<div class="row mensaje-envio">
+<div class="row mensaje-envio" ng-class="{active:hasFocus==true}">
     <div class="col-xs-10">
-        <textarea ng-model="elmensaje" name="elmensaje" class="elmensaje" placeholder="Escribe tu mensaje..."></textarea>
+        <textarea ng-model="elmensaje" ng-focus="hasFocus=true" ng-blur="hasFocus=false" name="elmensaje" class="elmensaje" placeholder="Escribe tu mensaje..."></textarea>
     </div>
     <div class="col-xs-2 align-center">
         <a href="" ng-click="enviar_mensaje()">

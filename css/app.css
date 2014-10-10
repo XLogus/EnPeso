@@ -1,3 +1,12 @@
+* {
+-webkit-backface-visibility: hidden;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+-webkit-user-select: none;
+}
+input {
+-webkit-user-select: text;
+}
+
 body, html {
     height: 100%;
     overflow-x: hidden;
@@ -371,6 +380,11 @@ textarea.elmensaje {
     border:none;
     color:#FFF;
     width:100%;
+}
+.mensaje-envio.active {
+    bottom: auto;
+    top:40px;
+    height: 50%;
 }
 .autor {
     font-weight: bold;
