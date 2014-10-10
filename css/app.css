@@ -383,7 +383,7 @@ textarea.elmensaje {
 }
 .mensaje-envio.active {
     bottom: auto;
-    top:40px;
+    top:0px;
     height: 50%;
 }
 .autor {
