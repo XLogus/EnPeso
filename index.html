@@ -16,14 +16,15 @@
   -->  
  
   <link rel="stylesheet" href="css/bootstrap.min.css" />  
+  <link rel="stylesheet" href="css/date.css"/>
   <link rel="stylesheet" href="css/app.css"/>
   <script type="text/javascript" src="js/includes/modernizr.js"></script>
 
   
 </head>
 <body  class="{{title}}">
-<div id="pageWrapper" class="container consombra">
-    <div class="row" id="headerWrapper">
+<div id="headerWrapper">
+	<div class="container">
         <ul id="mobileMenu" ng-show="activo">
                 <li>
                     <a ng-click="showmenu()" href="#/home">Perfil</a>
@@ -41,14 +42,14 @@
                     <a ng-click="showmenu()" href="#/chat">Mensajes</a>
                 </li>                
             </ul>
-        <div class="col-xs-2">
+        <div class="col-xs-2 visible-xs">
             <a href="" ng-click="showmenu()">
                 <img src="img/menu.png" />
             </a>
         </div>            
         
         <div id="header" class="col-md-10 col-xs-8">
-            {{title}} {{ responsive('width') }} - {{ responsive('height') }}
+            {{title}} w: {{ responsive('width') }} - h:{{ responsive('height') }} iduser: {{idusuario}}
         </div>
         
         <div class="col-md-2 col-xs-2">
@@ -56,10 +57,12 @@
                 <img src="img/tuerca.png" />
             </a>
         </div>
-    </div><!--row-->
+	</div><!--container-->
+</div><!--headerWrapper-->
+<div id="pageWrapper" class="consombra">    
     
-    <div class="row" id="contentWrapper">
-        <div id="sidebarWrapper" class="col-md-3 hidden-sm hidden-xs">            
+    <div id="contentWrapper">
+        <div id="sidebarWrapper" class="hidden-xs">            
             <ul id="sidebar" class="menu">
                 <li class="even" ng-class="{ active: activePath=='/home' }"><a href="#/home">home</a></li>
                 <li class="odd" ng-class="{ active: activePath=='/dietas' }"><a href="#/dietas">plan alimentario</a></li>
@@ -69,9 +72,9 @@
             </ul>
         </div><!--col-->
         
-        <div class="col-md-9" id="rightWrapper">
-            <div class="mainWrapper">            
-                <div ng-view></div>
+        <div id="rightWrapper">
+            <div class="mainWrapper">    				
+                <div ng-view></div>				
             </div><!--mainWrapper-->
         </div><!--col-->
     </div><!--row-->
@@ -101,6 +104,12 @@
   <script src="js/includes/angular-loader.min.js"></script>
   <script src="js/includes/angular-local-storage.min.js"></script>  
   <script src="js/includes/responsive.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+  <script src="js/includes/datePicker.js"></script>
+	<script src="js/includes/datePickerUtils.js"></script>
+	<script src="js/includes/dateRange.js"></script>
+	<script src="js/includes/input.js"></script>
   
   
       

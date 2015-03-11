@@ -7,11 +7,13 @@ var myApp = angular.module('myApp', [
   'ngRoute',
   'LocalStorageModule',
   'angularCharts',
+  'datePicker', 
+  'ui.bootstrap',
   'psResponsive',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
-  'myApp.controllers'
+  'myApp.controllers'    
 ]);
 
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -29,7 +31,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
-myApp.run(function($rootScope, auth, psResponsive) {
+myApp.run(function($rootScope, auth, psResponsive, localStorageService) {
     $rootScope.salir = function() {
         auth.logout();
     };
@@ -39,6 +41,7 @@ myApp.run(function($rootScope, auth, psResponsive) {
     $rootScope.responsive = psResponsive;
     $rootScope.originalw = psResponsive('width'); 
     $rootScope.originalh = psResponsive('height');
+	$rootScope.idusuario = localStorageService.get('id_user');
     $rootScope.diferencia = 0;
 });
 

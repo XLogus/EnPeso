@@ -9,25 +9,29 @@ input {
 
 body, html {
     height: 100%;
-    overflow-x: hidden;
+	width:100%;    
 }
 body {
     background-image: url(../img/body_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+	background-attachment:fixed;
     font-family: 'Open Sans', sans-serif;
 }
-#pageWrapper {
-    height: 100%;
+#pageWrapper {    
     background-color: #FFF;
     background: #dedee6; /* Old browsers */
-background: -moz-linear-gradient(top, #dedee6 0%, #ffffff 53%, #ffffff 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dedee6), color-stop(53%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* IE10+ */
-background: linear-gradient(to bottom, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	background: -moz-linear-gradient(top, #dedee6 0%, #ffffff 53%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dedee6), color-stop(53%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	max-width:1040px;
+	margin:auto;
+	position:relative;
+	height:100%;
 }
 
 
@@ -43,21 +47,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', end
 }
 #headerWrapper {
     background-color: #0099f1;
-    padding: 7px 0px;    
+    padding: 7px 0px;   
+	width:100%;		
+	position: fixed;
+	z-index: 99;
 }
 
 
 /********************************
   Sidebar
 **********************************/
-#sidebarWrapper {
-    position: relative;
+#sidebarWrapper {    
+    text-align: left;
+    vertical-align: top;
+    -moz-user-select: none;
+    width: 250px;
+    background: none repeat scroll 0% 0% #2B2B2B;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 45px;
+    overflow: hidden;
+	padding-top: 40px;
 }
 ul#sidebar {
     height: 100%;
     background-color: #262627;
     position: fixed;
-    width: 263px;
+    width: 265px;
     margin-left: -15px;    
     margin-top: 0px;
     padding: 0px;
@@ -122,9 +139,6 @@ ul#bottombar {
 /**********************************
   MainWrapper
 *********************************/
-.mainWrapper {
-    padding: 20px 10px;    
-}
 .mainWrapper h2.title{
     padding-top: 0px;    
     margin-top: 10px;
@@ -136,6 +150,27 @@ ul#bottombar {
 .mainWrapper h3{
     font-size: 20px;
     font-weight: normal;
+}
+#rightWrapper {
+    position: absolute;
+    left: 250px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: none repeat scroll 0% 0% #FEFEFE;
+    overflow: hidden;
+	height:100%;
+}
+.mainWrapper {
+    overflow: auto;
+    position: absolute;
+    top: 0px;    
+    bottom: 0px;
+    width: 100%;
+    background-color: #F7F7F7;
+	padding: 20px 40px;  
+	padding-top: 40px;  	
+	overflow-x: hidden;
 }
 
 
@@ -295,6 +330,7 @@ span.home-item {
     margin-bottom: 10px;
     */  
     min-height: 250px;  
+	padding-bottom: 100px;
 } 
 .mensajes-list {
     list-style: none;    
@@ -372,7 +408,7 @@ li.msj_paciente .mensaje:before {
     color:#FFF;
     position: fixed;
     bottom: 0px;
-    width: 100%;
+    width: 750px;
     padding: 10px 15px;
 }
 textarea.elmensaje {
@@ -727,6 +763,7 @@ px 68 160 252 */
     }
     .mainWrapper {
         padding: 0px;
+		padding:40px 10px;
     }
     #headerWrapper {
         position: absolute;
@@ -746,6 +783,7 @@ px 68 160 252 */
         position: absolute;
         width: 100%;
         padding-top: 40px;
+		left:0px;
     }
 }
 
