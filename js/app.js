@@ -123,7 +123,7 @@ myApp.factory("auth", function(localStorageService,$location,$http,$rootScope)
                     if(item.user_id==0) {
                         localStorageService.clearAll();
                         var id_user = localStorageService.get('id_user');            
-                        console.log("son id_user: "+id_user);
+                        //console.log("son id_user: "+id_user);
                         control(id_user);
                     }                    
                 });
