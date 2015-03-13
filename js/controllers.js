@@ -8,9 +8,13 @@ angular.module('myApp.controllers', [])
         $scope.login = function() {
             auth.login($scope.username, $scope.password);
         }
+		$scope.reseter = function() {
+			auth.reseter();
+		}
   }])
   .controller('ctrl_home', ['$scope', '$http', 'localStorageService', function($scope,$http,localStorageService) {
-        $scope.usuario_nombre = localStorageService.get('nombre');  
+	  $scope.imagen = 'img/avatar-default.png';
+        $scope.usuario_nombre = localStorageService.get('nombre');  		
     // Consultamos los datos
     var items;
     $http({
@@ -26,6 +30,9 @@ angular.module('myApp.controllers', [])
                     $scope.imc = items.imc;
                     $scope.masa = items.masa_grasa;
                     //$scope.cambia_vista("peso");
+					if(data.imagen!="") {
+						$scope.imagen = $myurl + 'uploads/' + data.imagen;
+					}
                 }).
                 error(function(data, status) {
                     console.log(status+"Request Failed");
@@ -71,7 +78,7 @@ angular.module('myApp.controllers', [])
                 success(function(data, status) {
                     items = data.primero;                    
                     $scope.cita_fecha = items.cita_fecha;
-                    $scope.cita_hora = items.cita_hora;   
+                    $scope.cita_hora = items.cita_hora; 					
                     $scope.items = data.items;                 
                 }).
                 error(function(data, status) {
@@ -80,13 +87,14 @@ angular.module('myApp.controllers', [])
                 });
 
   }])  
-  .controller('ctrl_registro', ['$scope', '$http', function($scope, $http) {
+  .controller('ctrl_registro', ['$scope', '$http', function($scope, $http) {		
         var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
         var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];    
         var $hoy = Date.today();
         var $hoy_dia = $hoy.getDay()-1;
         var $hoy_mes = $hoy.toString("M")-1;
         $scope.hoy = $hoy;        
+		$scope.sinmensaje = false;
         //$scope.fecha_actual = $hoy.toString("dd ")+months[$hoy_mes]+$hoy.toString(" yyyy");
         //$scope.dia_actual = days[$hoy_dia];
         //$scope.past = $scope.fecha_actual.add(-1).days();
@@ -105,8 +113,9 @@ angular.module('myApp.controllers', [])
             voto_ver($scope.hoy_plano);
         }
         var voto_ver = function($fecha) {
+			$scope.sinmensaje = true;					
             $scope.fecha_voto = 0;
-            $scope.observacion = "Ingrese sus comentarios";
+            $scope.observacion = "";
             $http({
                 method: "JSONP", 
                 params: {'fecha':$fecha},
@@ -131,13 +140,14 @@ angular.module('myApp.controllers', [])
         
         /// Guardar registro
         $scope.voto_guardar = function() {
+			$scope.sinmensaje = false;
             $http({
                 method: "JSONP", 
                 params: {'accion':'guardar', 'fecha':$scope.hoy_plano, 'mensaje':$scope.observacion, 'puntaje':$scope.fecha_voto},
                 url: $url + "registro.php?callback=JSON_CALLBACK"
                 }).
                 success(function(data, status) {
-                    $location.path("/registro");                 
+                    $location.path("/registro");    										
                 });
         }
   }])
@@ -225,7 +235,9 @@ angular.module('myApp.controllers', [])
                     $scope.error = 1;
                 });
   }])
-  .controller('ctrl_configuracion', ['$scope', '$http', function($scope, $http) {
+  .controller('ctrl_configuracion', ['$scope', '$http', '$upload', function($scope, $http, $upload) {
+	  $scope.imagen = 'img/avatar-default.png';
+	  $scope.sinmensaje = true;
         // Opciones del combo
         $scope.generos = [{
             "id":"f",
@@ -242,10 +254,13 @@ angular.module('myApp.controllers', [])
                 }).
                 success(function(data, status) {
                     $scope.items = data.items;
+					if(data.imagen!="") {
+						$scope.imagen = $myurl+'uploads/'+data.imagen;
+					}
         });
         
         /// Guardar datos
-        $scope.guardar = function(items) {
+        $scope.guardar = function(items) {			
             $http({
                 method: "JSONP", 
                 params: {'nombres':items.nombres, 'apellidos':items.apellidos, 'nacimiento':items.nacimiento, 'genero':items.genero, 'telefono':items.telefono, 'celular':items.celular, 'email':items.email, 'direccion':items.direccion, 'action':"guardar"},                        
@@ -253,7 +268,8 @@ angular.module('myApp.controllers', [])
                 isArray: true            
                 }).
                 success(function(data, status) {
-                    alert("Datos guardados");
+                    //alert("Datos guardados");
+					$scope.sinmensaje = false;
                     $scope.rpta = data;
                 }).
                 error(function(data, status) {
@@ -271,12 +287,39 @@ angular.module('myApp.controllers', [])
                 isArray: true            
                 }).
                 success(function(data, status) {
-                    alert("Clave modificada");
+                    $scope.sinmensaje = false;
                     $scope.rpta = data;
                 });
         }
+		
+		
+		/// Subir imagen
+		$scope.$watch('files', function () {
+        $scope.upload($scope.files);
+    });
+
+    $scope.upload = function (files) {
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                $upload.upload({
+                    url: $url+'upload.php',
+                    fields: {'username': $scope.username},
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                    //console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+					$scope.imagen = $myurl +'uploads/'+ config.file.name;
+                });
+            }
+        }
+    };
   }])
-  .controller('ctrl_chat', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {        
+  .controller('ctrl_chat', ['$scope', '$http', '$rootScope', '$location', '$anchorScroll', function($scope, $http, $rootScope, $location, $anchorScroll) {    
+		$scope.imagen = 'img/avatar-default.png';  
+		$scope.imagen2 = 'img/avatar-default.png';  
         var actualizar_mensajes = function() {
             $http({
                 method: "JSONP", 
@@ -285,10 +328,20 @@ angular.module('myApp.controllers', [])
                 success(function(data, status) {
                     $scope.items = data.items;                    
                     $scope.cvn_id = data.cvn_id;
-                    //$scope.cvn_id = "122"; 
+                    //$scope.cvn_id = "122"; 		
+					$scope.imagen = $myurl +'uploads/'+ data.imagen;		
+					$scope.imagen2 = '/panel3/imgSelect/files/'+ data.imagen2;		
+					$scope.gotoBottom();
                 });
         }
-        actualizar_mensajes();
+		$scope.gotoBottom = function() {
+			//$location.hash('bottom');
+			//$anchorScroll();
+			var redText = document.getElementById ("bottom");
+			redText.scrollIntoView ();
+		}		
+        actualizar_mensajes();		
+		
         $scope.enviar_mensaje = function() {
             //alert("enviado");
             $http({
@@ -299,9 +352,10 @@ angular.module('myApp.controllers', [])
                 success(function(data, status) {
                     $scope.elmensaje = "";
                     actualizar_mensajes();
+					$scope.gotoBottom();					
                     $scope.envio = data.items;                     
                 });
         }   
-        setInterval('actualizar_mensajes()',120000);     
+        setInterval(actualizar_mensajes(),12000);     
   }]);
   

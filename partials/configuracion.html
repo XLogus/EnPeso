@@ -1,3 +1,12 @@
+<br/>
+<div class="row ng-hide" ng-hide="sinmensaje">
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			Los datos fueron guardados
+		</div>
+	</div>
+</div>
+
 <div class="row">    
     <h3 class="seccion">INFORMACIÓN PERSONAL</h3>
     <ul class="config-list">
@@ -16,7 +25,16 @@
             -->
             <select name="genero" id="genero" ng-model="items.genero" ng-options="genero.id as genero.name for genero in generos "></select>            
         </li>
-    </ul>
+		<li>Foto: 
+		<div class="btn btn-primary" ng-file-select ng-file-change="upload($files)" ng-capture="camera" ng-accept="image">Elegir Imagen</div>
+		<div class="perfilThumb">
+			<img ng-src="{{imagen != '' && imagen}}"/>
+		</div>
+		</li>
+		<li>
+            <a href="" ng-click="guardar(items)" class="btn btn-primary">Guardar Cambios</a>
+        </li>
+    </ul>	
     <h3 class="seccion">INFORMACIÓN DE CONTACTO</h3>
     <ul class="config-list">
         <li>            
@@ -44,7 +62,7 @@
             <input type="password" size="30" ng-model="nclave2" name="nueva_clave2" class="text" placeholder="Repetir Nueva Clave" />
         </li>
         <li>
-            <a href="" ng-click="cambiar_clave(nclave, nclave2)" ng-disabled="nclave!=nclave2 || nclave==''" class="btn btn-primary">Cambiar Clave</a>
+            <a href="" disabled="disabled" ng-click="cambiar_clave(nclave, nclave2)" ng-disabled="nclave!=nclave2 || nclave==''" class="btn btn-primary">Cambiar Clave</a> 
         </li>
         <li>
         <a href="" ng-click="salir()">

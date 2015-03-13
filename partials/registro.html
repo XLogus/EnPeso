@@ -1,3 +1,12 @@
+<br/>
+<div class="row ng-hide" ng-hide="sinmensaje">
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			El registro fue guardado
+		</div>
+	</div>
+</div>
+
 <div class="row">
     <div class="col-xs-2">
         <a class="ctrl_fecha" href="" ng-click="dia_anterior()"><</a>
@@ -13,21 +22,21 @@
 
 <div class="row fecha-votacion">    
     <div class="col-xs-4">
-        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje1" class="frm-radio" value="1" /> 
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje1" class="frm-radio" value="1"  ng-change="voto_guardar()" /> 
         <label for="fecha_puntaje1" class="label-radio label-mal">Mal</label>
     </div>
     <div class="col-xs-4">
-        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje2" class="frm-radio" value="2" /> 
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje2" class="frm-radio" value="2"  ng-change="voto_guardar()" /> 
         <label for="fecha_puntaje2" class="label-radio label-mamenos">+/-</label>
     </div>
     <div class="col-xs-4">
-        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje3" class="frm-radio" value="3" /> 
+        <input ng-model="fecha_voto" type="radio" name="fecha_puntaje" id="fecha_puntaje3" class="frm-radio" value="3"  ng-change="voto_guardar()" /> 
         <label for="fecha_puntaje3" class="label-radio label-bien">Bien</label>
     </div>
 </div>
 <div class="row">    
     <div class="col-xs-12">
-        <textarea name="fecha-observacion" class="fecha-observacion" ng-model="observacion"></textarea>
+        <textarea name="fecha-observacion" class="fecha-observacion" ng-model="observacion" placeholder="Ingrese sus comentarios"></textarea>
         <br />
         <a href="" ng-click="voto_guardar()" class="btn btn-primary btn-block">Guardar</a>
     </div>

@@ -9,25 +9,17 @@ input {
 
 body, html {
     height: 100%;
-	width:100%;    
-}
-body {
-    background-image: url(../img/body_bg.jpg);
+	width:100%;  
+background-image: url(../img/body_bg.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-	background-attachment:fixed;
+    background-size: cover;	
+	background-attachment:fixed;		
+}
+body {	    
     font-family: 'Open Sans', sans-serif;
 }
 #pageWrapper {    
-    background-color: #FFF;
-    background: #dedee6; /* Old browsers */
-	background: -moz-linear-gradient(top, #dedee6 0%, #ffffff 53%, #ffffff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dedee6), color-stop(53%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #dedee6 0%,#ffffff 53%,#ffffff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedee6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    background-color: #FFF;    
 	max-width:1040px;
 	margin:auto;
 	position:relative;
@@ -161,6 +153,10 @@ ul#bottombar {
     overflow: hidden;
 	height:100%;
 }
+body.login  #rightWrapper {
+	width:100%;
+	left:0px;	
+}
 .mainWrapper {
     overflow: auto;
     position: absolute;
@@ -227,8 +223,7 @@ body.perfil h2 {
     width: 120px;
     height: 120px;
     margin: auto;
-    background-color: #FFF;
-    overflow: hidden;    
+    background-color: #FFF;    
     border:1px solid #0099f1;
     border-radius: 50%;
     margin-top: 30px;
@@ -240,8 +235,9 @@ body.perfil h2 {
     height: 100%;
     overflow: hidden;
 }
-.fotoWrapper2 img{
-    margin-left: -50%;
+.fotoWrapper2 img{    
+	width:100%;
+	height:100%;
 }
 
 .homeinfo-left, .homeinfo-right {
@@ -287,6 +283,8 @@ span.home-item {
     font-size: 13px;
     color: #777;
 }
+.cita-antigua { padding:7px 0px; border-bottom:1px solid #DDD; background-image:url(../img/icon-consulta.png); background-repeat:no-repeat; background-position:0px 4px; padding-left:20px; }
+
 #mobileMenu {
     position: absolute;
     top:40px;
@@ -400,8 +398,7 @@ li.msj_paciente .mensaje:before {
 
 
 .mensaje-contenedor {
-    width: 100%;
-    overflow: hidden;
+    width: 100%;    
 }
 .mensaje-envio {
     background-color: #272c30;
@@ -475,8 +472,14 @@ body.login .col-md-9 {
     width: 100%;
 }
 #loginWrapper {
-    max-width: 445px;
-    margin: auto;    
+    max-width: 445px;    
+	min-height:300px;
+	top:50%;
+	position:absolute;
+	left:50%;
+	margin-left:-222px;
+	margin-top:-250px;
+	width:445px;
 }
 #loginBox {    
     max-width: 445px;
@@ -788,3 +791,5 @@ px 68 160 252 */
 }
 
 
+.perfilThumb { width:150px; height:150px; border-radius:50%; overflow:hidden; margin-top:5px; }
+.perfilThumb img{ width:auto; height:100%; } 

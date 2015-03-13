@@ -3,9 +3,9 @@
     <div id="loginBox">
         <h2 class="talign-center">Bienvenido</h2>
         <form name="loginUserForm">
-            <input ng-model="username" name="login" id="login" value="" class="txt login" placeholder="Ingrese email" type="text" required />
+            <input ng-change="reseter()" ng-model="username" name="login" id="login" value="" class="txt login" placeholder="Ingrese email" type="text" required />
             <br />
-            <input ng-model="password" name="pass" id="pass" value="" class="txt pass" placeholder="Ingrese su clave" type="password" required />
+            <input ng-change="reseter()" ng-model="password" name="pass" id="pass" value="" class="txt pass" placeholder="Ingrese su clave" type="password" required />
             <br />
             <input ng-click="login(username)" type="submit" name="submit" id="submit" value="Ingresar" class="submit" ng-disabled="!loginUserForm.$valid" />
         </form>

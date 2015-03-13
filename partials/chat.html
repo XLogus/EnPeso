@@ -1,10 +1,18 @@
 <h2 class="title">Mensajes</h2>
+<a ng-click="gotoBottom()">Ir al final</a>
+<br/>
+<br/>
 <div class="mensajes-historial">
     <ul class="mensajes-list">
-                <li ng-repeat="msg in items" class="{{msg.tipo}}">
-                    <div class="mensaje-contenedor">
-                    <div class="mensaje-avatar">
-                        <img src="img/avatar-default.png" />
+                <li ng-repeat="msg in items" class="{{msg.tipo}}">					
+                    <div class="mensaje-contenedor row">
+                    <div class="mensaje-avatar">    
+						<div ng-if="msg.tipo == 'msj_paciente'">
+							<img ng-src="{{imagen}}" width="90" height="90" />
+						</div>
+						<div ng-if="msg.tipo != 'msj_paciente'">
+							<img ng-src="{{imagen2}}" width="90" height="90" />
+						</div>
                     </div>
                     <div class="mensaje">
                         {{msg.mensaje}}
@@ -12,9 +20,12 @@
                         <span class="autor">{{msg.nombre}}</span>
                     </div>                    
                     </div>
-                    <span class="fecha">{{msg.fecha}} {{msg.hora}}</span>
+					<div class="row">
+						<span class="fecha">{{msg.fecha}} {{msg.hora}}</span>					
+					</div>
                 </li>
             </ul>
+	<a id="bottom" name="bottom"></a>
 </div>
 <div class="row mensaje-envio" ng-style="{'bottom':diferencia+'px'}">
     <form ng-submit="enviar_mensaje()">
@@ -25,7 +36,7 @@
 </div>
     </div>
     <div class="col-xs-2 align-center">
-        <input type="image" src="img/mas.png"  ng-click="enviar_mensaje()"/>        
+        <input type="submit" value="Enviar"  ng-click="enviar_mensaje()" class="btn btn-primary"/>        
     </div>
     </form>
 </div>

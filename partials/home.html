@@ -1,6 +1,6 @@
 <div class="fotoWrapper">
     <div class="fotoWrapper2">
-        <img src="img/avatar-default.png" />
+        <img ng-src="{{imagen != '' && imagen}}"/>
     </div>
 </div>
 <h2 class="talign-center">{{usuario_nombre}}</h2>
@@ -10,23 +10,25 @@
 <div class="home-basico">
     <div class="row">
         <div class="col-xs-6 talign-center">
+			<a href="#/peso">
             <img src="img/icono-peso.png" />
             <br />
             <span class="peso_perdido">{{peso_perdido}}</span> <span class="peso_signo">Kg</span>
             <br />
-            <a href="#/peso">
+            
                 <span class="home-item">Peso perdido</span>
                 <img src="img/flecha-derecha.png" />
             </a>
         </div>
         <div class="col-xs-6 talign-center">
+			<a href="#/citas">
             <img src="img/icono-cita.png" />
             <br />
             <span class="cita_fecha">{{cita_fecha}}</span>
             <br />
             <span class="cita_hora">{{cita_hora}}</span>
             <br />
-            <a href="#/citas">
+            
                 <span class="home-item">Próxima cita</span>
                 <img src="img/flecha-derecha.png" />
             </a>                
