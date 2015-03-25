@@ -234,6 +234,7 @@ body.perfil h2 {
     width: 100%;
     height: 100%;
     overflow: hidden;
+	background-size:100%;
 }
 .fotoWrapper2 img{    
 	width:100%;
@@ -336,14 +337,17 @@ span.home-item {
     margin: 0px;
     padding-bottom: 50px;
 } 
-.mensaje-avatar {
-    border-radius: 50%;
+.mensaje-avatar {    
     width: 15%;
     max-width: 80px;
-    height: auto;
-    border:  1px  solid #cbcdd9;
-    overflow: hidden;
+    height: auto;    
     float:left;    
+}
+.mensaje-avatar2 {
+	border-radius:50%;
+	width:70px;
+	height:70px;
+	background-size:100%;
 }
 li.msj_paciente .mensaje-avatar{
     float: right;    

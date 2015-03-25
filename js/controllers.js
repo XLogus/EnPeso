@@ -31,7 +31,7 @@ angular.module('myApp.controllers', [])
                     $scope.masa = items.masa_grasa;
                     //$scope.cambia_vista("peso");
 					if(data.imagen!="") {
-						$scope.imagen = $myurl + 'uploads/' + data.imagen;
+						$scope.imagen = $myurl + 'uploads/thumb_' + data.imagen;
 					}
                 }).
                 error(function(data, status) {
@@ -255,7 +255,7 @@ angular.module('myApp.controllers', [])
                 success(function(data, status) {
                     $scope.items = data.items;
 					if(data.imagen!="") {
-						$scope.imagen = $myurl+'uploads/'+data.imagen;
+						$scope.imagen = $myurl+'uploads/thumb_'+data.imagen;
 					}
         });
         
@@ -329,7 +329,7 @@ angular.module('myApp.controllers', [])
                     $scope.items = data.items;                    
                     $scope.cvn_id = data.cvn_id;
                     //$scope.cvn_id = "122"; 		
-					$scope.imagen = $myurl +'uploads/'+ data.imagen;		
+					$scope.imagen = $myurl +'uploads/thumb_'+ data.imagen;		
 					$scope.imagen2 = '/panel3/imgSelect/files/'+ data.imagen2;		
 					$scope.gotoBottom();
                 });

@@ -6,12 +6,17 @@
     <ul class="mensajes-list">
                 <li ng-repeat="msg in items" class="{{msg.tipo}}">					
                     <div class="mensaje-contenedor row">
+					<div class="col-md-12">
                     <div class="mensaje-avatar">    
-						<div ng-if="msg.tipo == 'msj_paciente'">
+						<div ng-if="msg.tipo == 'msj_paciente'" class="mensaje-avatar2" style="background-image:url({{imagen}});">
+							<!--
 							<img ng-src="{{imagen}}" width="90" height="90" />
+							-->							
 						</div>
-						<div ng-if="msg.tipo != 'msj_paciente'">
+						<div ng-if="msg.tipo != 'msj_paciente'" class="mensaje-avatar2" style="background-image:url({{imagen2}});">
+							<!--
 							<img ng-src="{{imagen2}}" width="90" height="90" />
+							-->
 						</div>
                     </div>
                     <div class="mensaje">
@@ -20,8 +25,11 @@
                         <span class="autor">{{msg.nombre}}</span>
                     </div>                    
                     </div>
+					</div>
 					<div class="row">
-						<span class="fecha">{{msg.fecha}} {{msg.hora}}</span>					
+						<div class="col-md-12">
+							<span class="fecha">{{msg.fecha}} {{msg.hora}}</span>					
+						</div>
 					</div>
                 </li>
             </ul>
